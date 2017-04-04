@@ -9,11 +9,13 @@
 % BCOR ist "Binding Correction", also wieviel Innenrand verloren geht
 % A4 hat 297mm x 210mm
 % wenn keine Marginalien, dann ist Breite 15cm vielleicht besser
-\areaset{14cm}{25cm}
+\areaset{15cm}{23cm}
  
 %% Die folgende Zeile sorgt dafür, daß die Fußnoten eingerückt werden,
 %% und zwar um 2em (class scrbook).
 \deffootnote{2em}{2em}{\textsuperscript{\normalfont\thefootnotemark} }
+\setlength{\headheight}{1.5cm}
+%\setlength{\footheight}{2cm}
  
 \usepackage[utf8x]{inputenc}  % Unterstützung für Unicode-Zeichen-Eingabe
 \usepackage[T1]{fontenc}      % Unterstützung für Europäische-Zeichen-Ausgabe
@@ -22,10 +24,10 @@
 \usepackage[scaled=.90]{helvet}  % schönere Schriftart: Helvetica
 \usepackage{mathptmx}            % passende Mathe-Schriftart
 \usepackage{courier}             % passende Monospaced-Schriftart
-\usepackage{pgf}              % Unterstützung für Graphiken
-\usepackage{tikz}             % Unterstützung für Graphiken
-\usepackage[autostyle=true,german=quotes]{csquotes}
- 
+\usepackage{pgf}            	 % Unterstützung für Graphiken
+\usepackage{graphicx}			 % Unterstützung für Graphiken
+
+
 \usepackage[                
    pdftex,                  % Ausgabe-Medium: PDF
    colorlinks=true,         % farbige Links in der Bildschirm-Version?
@@ -36,6 +38,8 @@
    bookmarks=true
    ]{hyperref}              % Paket für Links im PDF
  
+ 
+
 %%%% Informationen über den Text festlegen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Steuerung der Position eines Polarisations-Beamer}
 \subtitle{Projekt Dokumentation für die Robotik-Vorlesung}
@@ -55,12 +59,17 @@
 }
 %%%% hier beginnt der Inhalt %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
- 
-	\maketitle
 
-	\input{abstract}
+	\titlehead{\vspace{-50pt}\centering\includegraphics[height=2cm]{images/dhbw.png}\vspace{-50pt}}
 	
+	\maketitle
+	%\vspace{-30pt}
+	
+	\input{abstract}
 	\tableofcontents
+	\clearpage
+
+	\pagestyle{headings}
 	
 	%% und hier der Inhalt...
 	\input{content}
