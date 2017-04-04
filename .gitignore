@@ -1,3 +1,4 @@
 **/auxFiles
 **/output
 *.vscodeLog
+*.log
