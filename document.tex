@@ -1,0 +1,68 @@
+\documentclass[
+	paper=a4,
+	a4paper,
+	11pt,
+	abstract=on,
+	%twoside
+	]{scrartcl}
+% Druckbereich: \areaset[BCOR]{textwidth}{textheight}
+% BCOR ist "Binding Correction", also wieviel Innenrand verloren geht
+% A4 hat 297mm x 210mm
+% wenn keine Marginalien, dann ist Breite 15cm vielleicht besser
+\areaset{14cm}{25cm}
+ 
+%% Die folgende Zeile sorgt dafür, daß die Fußnoten eingerückt werden,
+%% und zwar um 2em (class scrbook).
+\deffootnote{2em}{2em}{\textsuperscript{\normalfont\thefootnotemark} }
+ 
+\usepackage[utf8x]{inputenc}  % Unterstützung für Unicode-Zeichen-Eingabe
+\usepackage[T1]{fontenc}      % Unterstützung für Europäische-Zeichen-Ausgabe
+\usepackage{ae}               % verbesserte Unterstützung für Umlaute
+\usepackage[ngerman]{babel}    % deutsche Übersetzungen und Wortumbrüche
+\usepackage[scaled=.90]{helvet}  % schönere Schriftart: Helvetica
+\usepackage{mathptmx}            % passende Mathe-Schriftart
+\usepackage{courier}             % passende Monospaced-Schriftart
+\usepackage{pgf}              % Unterstützung für Graphiken
+\usepackage{tikz}             % Unterstützung für Graphiken
+\usepackage[autostyle=true,german=quotes]{csquotes}
+ 
+\usepackage[                
+   pdftex,                  % Ausgabe-Medium: PDF
+   colorlinks=true,         % farbige Links in der Bildschirm-Version?
+   pdfstartview=FitV,       % wie soll Acrobat starten?
+   linkcolor=black,         % Farbe für Querverweise
+   citecolor=black,         % Farbe für Zitierungen
+   urlcolor=black,          % Farbe für Links
+   bookmarks=true
+   ]{hyperref}              % Paket für Links im PDF
+ 
+%%%% Informationen über den Text festlegen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Steuerung der Position eines Polarisations-Beamer}
+\subtitle{Projekt Dokumentation für die Robotik-Vorlesung}
+\author{Tobias Dreym und Kornelius Hellwich}
+\date{Juni 2017}
+ 
+\newcommand{\Inhalt}{
+	\foreach \i in {01,02,03,04,05,06,07,08,09,...,99} {%
+		\edef\FileName{content/kapitel\i}%
+			\IfFileExists{\FileName}{%
+				\input{\FileName}
+			}
+			{%
+				%file does not exist
+			}
+	}
+}
+%%%% hier beginnt der Inhalt %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+ 
+	\maketitle
+
+	\input{abstract}
+	
+	\tableofcontents
+	
+	%% und hier der Inhalt...
+	\input{content}
+	
+\end{document}

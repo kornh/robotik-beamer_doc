@@ -1,0 +1,68 @@
+{
+    "version": "0.1.0",
+    "showOutput": "always",
+    "isShellCommand": true,
+    "suppressTaskName": true,
+    "linux": {
+        "command": "bash",
+        "args": [
+            "-c"
+        ],
+        "tasks": [
+            {
+                "taskName": "lnx show PDF",
+                "isTestCommand": true,
+                "suppressTaskName": true,
+                "args": [
+                    "evince document.pdf"
+                ]
+            },
+            {
+                "taskName": "lnx build PDF",
+                "isBuildCommand": true,
+                "suppressTaskName": true,
+                "args": [
+                    "if pdflatex -output-directory=auxFiles document; then mv auxFiles/document.pdf document.pdf; fi"
+                ]
+            },
+            {
+                "taskName": "lnx clear aux",
+                "suppressTaskName": true,
+                "args": [
+                    "if ! rm -v auxFiles/*; then echo \"No files found\"; fi"
+                ]
+            }
+        ]
+    },
+    "windows": {
+        "command": "cmd",
+        "args": [
+            "/c"
+        ],
+        "tasks": [
+            {
+                "taskName": "show PDF",
+                "suppressTaskName": true,
+                "args": [
+                    "\"C:\\Program Files (x86)\\Adobe\\Acrobat Reader DC\\Reader\\AcroRd32.exe\" document.pdf"
+                ]
+            },
+            {
+                "taskName": "build PDF",
+                "suppressTaskName": true,
+                "isBuildCommand": true,
+                "showOutput": "always",
+                "args": [
+                    "pdflatex -aux-directory=auxFiles document"
+                ]
+            },
+            {
+                "taskName": "clear aux",
+                "suppressTaskName": true,
+                "args": [
+                    "del auxFiles\\* /s /q"
+                ]
+            }
+        ]
+    }
+}
